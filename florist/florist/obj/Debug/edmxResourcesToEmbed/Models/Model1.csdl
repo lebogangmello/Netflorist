@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="floristModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="custEmail" />
+    </Key>
+    <Property Name="custEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="custId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Payments" Relationship="floristModel.FK_Payments_Customer" FromRole="Customer" ToRole="Payment" />
+    <NavigationProperty Name="tblOrders" Relationship="floristModel.FK_tblOrder_Customer" FromRole="Customer" ToRole="tblOrder" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="paymentId" />
+    </Key>
+    <Property Name="paymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cardCCV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="paymentDate" Type="DateTime" Precision="0" />
+    <Property Name="custEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="floristModel.FK_Payments_Customer" FromRole="Payment" ToRole="Customer" />
+    <NavigationProperty Name="tblOrders" Relationship="floristModel.FK_tblOrder_Payments" FromRole="Payment" ToRole="tblOrder" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="prodId" />
+    </Key>
+    <Property Name="prodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prodCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prodDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="prodPrice" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="prodName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id" Type="Int32" />
+    <NavigationProperty Name="supplierinfo" Relationship="floristModel.FK_product_supplierinfo" FromRole="product" ToRole="supplierinfo" />
+    <NavigationProperty Name="tblProImages" Relationship="floristModel.FK_tblProImage_product" FromRole="product" ToRole="tblProImage" />
+  </EntityType>
+  <EntityType Name="tblDriver">
+    <Key>
+      <PropertyRef Name="drvId" />
+    </Key>
+    <Property Name="drvId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="drvFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="drvLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="drvContact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="drvEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="drv_Password" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderId" Type="Int32" />
+    <NavigationProperty Name="tblOrder" Relationship="floristModel.FK_tblDriver_tblOrder" FromRole="tblDriver" ToRole="tblOrder" />
+    <NavigationProperty Name="Admins" Relationship="floristModel.FK_Admin_tblDriver" FromRole="tblDriver" ToRole="Admin" />
+  </EntityType>
+  <EntityContainer Name="floristEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
+    <EntitySet Name="tblProImages" EntityType="floristModel.tblProImage" />
+    <EntitySet Name="product_View" EntityType="floristModel.product_View" />
+    <EntitySet Name="Admins" EntityType="floristModel.Admin" />
+    <EntitySet Name="supplierinfoes" EntityType="floristModel.supplierinfo" />
+    <FunctionImport Name="Procedure" ReturnType="Collection(floristModel.Procedure_Result)" />
+    <EntitySet Name="suppliers" EntityType="floristModel.supplier" />
+    <EntitySet Name="tblOrders" EntityType="floristModel.tblOrder" />
+    <AssociationSet Name="FK_Admin_tblOrder" Association="floristModel.FK_Admin_tblOrder">
+      <End Role="tblOrder" EntitySet="tblOrders" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_supplierinfo" Association="floristModel.FK_product_supplierinfo">
+      <End Role="supplierinfo" EntitySet="supplierinfoes" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProImage_product" Association="floristModel.FK_tblProImage_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="tblProImage" EntitySet="tblProImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplier_supplierinfo" Association="floristModel.FK_supplier_supplierinfo">
+      <End Role="supplierinfo" EntitySet="supplierinfoes" />
+      <End Role="supplier" EntitySet="suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDriver_tblOrder" Association="floristModel.FK_tblDriver_tblOrder">
+      <End Role="tblOrder" EntitySet="tblOrders" />
+      <End Role="tblDriver" EntitySet="tblDrivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_supplier" Association="floristModel.FK_Admin_supplier">
+      <End Role="supplier" EntitySet="suppliers" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_tblDriver" Association="floristModel.FK_Admin_tblDriver">
+      <End Role="tblDriver" EntitySet="tblDrivers" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Customer" Association="floristModel.FK_Payments_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrder_Customer" Association="floristModel.FK_tblOrder_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="tblOrder" EntitySet="tblOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrder_Payments" Association="floristModel.FK_tblOrder_Payments">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="tblOrder" EntitySet="tblOrders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblProImage">
+    <Key>
+      <PropertyRef Name="img_Id" />
+    </Key>
+    <Property Name="img_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="prodId" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="floristModel.FK_tblProImage_product" FromRole="tblProImage" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product_View">
+    <Key>
+      <PropertyRef Name="prodId" />
+      <PropertyRef Name="photo" />
+    </Key>
+    <Property Name="prodId" Type="Int32" Nullable="false" />
+    <Property Name="prodCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prodDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="prodPrice" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adId" />
+    </Key>
+    <Property Name="adId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="suppId" Type="String" />
+    <Property Name="orderId" Type="Int32" />
+    <NavigationProperty Name="tblOrder" Relationship="floristModel.FK_Admin_tblOrder" FromRole="Admin" ToRole="tblOrder" />
+    <Property Name="drvId" Type="Int32" />
+    <NavigationProperty Name="supplier" Relationship="floristModel.FK_Admin_supplier" FromRole="Admin" ToRole="supplier" />
+    <NavigationProperty Name="tblDriver" Relationship="floristModel.FK_Admin_tblDriver" FromRole="Admin" ToRole="tblDriver" />
+  </EntityType>
+  <EntityType Name="supplierinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="supplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="suppEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="products" Relationship="floristModel.FK_product_supplierinfo" FromRole="supplierinfo" ToRole="product" />
+    <NavigationProperty Name="suppliers" Relationship="floristModel.FK_supplier_supplierinfo" FromRole="supplierinfo" ToRole="supplier" />
+  </EntityType>
+  <ComplexType Name="Procedure_Result">
+    <Property Type="Int32" Name="orderId" Nullable="false" />
+    <Property Type="String" Name="prodName" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="prodPrice" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="prodDesc" Nullable="true" />
+    <Property Type="String" Name="custEmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="orderDeliveryAddress" Nullable="true" />
+    <Property Type="String" Name="orderStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="suppId" />
+    </Key>
+    <Property Name="suppId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="serviceDate" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" />
+    <NavigationProperty Name="supplierinfo" Relationship="floristModel.FK_supplier_supplierinfo" FromRole="supplier" ToRole="supplierinfo" />
+    <NavigationProperty Name="Admins" Relationship="floristModel.FK_Admin_supplier" FromRole="supplier" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="totalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="orderDeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="custEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admins" Relationship="floristModel.FK_Admin_tblOrder" FromRole="tblOrder" ToRole="Admin" />
+    <NavigationProperty Name="tblDrivers" Relationship="floristModel.FK_tblDriver_tblOrder" FromRole="tblOrder" ToRole="tblDriver" />
+    <Property Name="paymentId" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="floristModel.FK_tblOrder_Customer" FromRole="tblOrder" ToRole="Customer" />
+    <NavigationProperty Name="Payment" Relationship="floristModel.FK_tblOrder_Payments" FromRole="tblOrder" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Admin_tblOrder">
+    <End Type="floristModel.tblOrder" Role="tblOrder" Multiplicity="0..1" />
+    <End Type="floristModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrder">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_supplierinfo">
+    <End Type="floristModel.supplierinfo" Role="supplierinfo" Multiplicity="0..1" />
+    <End Type="floristModel.product" Role="product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplierinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProImage_product">
+    <End Type="floristModel.product" Role="product" Multiplicity="0..1" />
+    <End Type="floristModel.tblProImage" Role="tblProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="prodId" />
+      </Principal>
+      <Dependent Role="tblProImage">
+        <PropertyRef Name="prodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplier_supplierinfo">
+    <End Type="floristModel.supplierinfo" Role="supplierinfo" Multiplicity="0..1" />
+    <End Type="floristModel.supplier" Role="supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplierinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="supplier">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDriver_tblOrder">
+    <End Type="floristModel.tblOrder" Role="tblOrder" Multiplicity="0..1" />
+    <End Type="floristModel.tblDriver" Role="tblDriver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrder">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="tblDriver">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_supplier">
+    <End Type="floristModel.supplier" Role="supplier" Multiplicity="0..1" />
+    <End Type="floristModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="suppId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="suppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_tblDriver">
+    <End Type="floristModel.tblDriver" Role="tblDriver" Multiplicity="0..1" />
+    <End Type="floristModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDriver">
+        <PropertyRef Name="drvId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="drvId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Customer">
+    <End Type="floristModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="floristModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="custEmail" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="custEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrder_Customer">
+    <End Type="floristModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="floristModel.tblOrder" Role="tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="custEmail" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="custEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrder_Payments">
+    <End Type="floristModel.Payment" Role="Payment" Multiplicity="0..1" />
+    <End Type="floristModel.tblOrder" Role="tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="paymentId" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="paymentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

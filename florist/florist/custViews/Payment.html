@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Payment Page</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="PaymentController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <div class="container">
+        <div class="right"></div>
+        <div class="left">
+            <div class="formBox">
+                <form>
+                    <label>CUSTOMER CARD INFORMATION</label>
+                    <br />
+                    <br />
+                    <input class="form-control" type="text" ng-model="cardName" placeholder="ABSA" /><br />
+                    <input class="form-control" type="text" ng-model="cardCCV" placeholder="000" />
+                    <br />
+
+                    <select class="form-control" name="cardType" ng-model="cardType">
+                        <option value="">Please select one</option>
+                        <option value="MASTERCARD">MASTERCARD</option>
+                        <option value="VISA">VISA</option>
+                        <option value="EXPRESS">Express</option>
+                    <option value="credit card">credit card</option>
+                    </select><br />
+                    <!--<input list="Card type" ng-model="cardType" name="Card Type" class="form-control input-lg" placeholder="BANK CARD TYPE" />-->
+                    <label>Card Expiry Date</label>
+                    <br />
+                    <input class="form-control" type="text" ng-model="cardExpMonth" placeholder="12" maxlength="2" min="2" /><br />
+                    <input class="form-control" type="text" ng-model="cardExpYear" placeholder="2018" maxlength="4" min="4" />
+                    <label>Payment Date</label><br />
+                    <input class="form-control" type="date" ng-model="paymentDate" placeholder="Date" />
+                    <br />
+                    <label>CUSTOMER EMAIL</label><br />
+                    {{email}}<br />
+                    <!--<input type="text" ng-model="email" placeholder="email" disabled />-->
+                    <input class="btn btn-default" ng-click="Pay()" type="button" value="CLICK TO PAY" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p> 
+</body>
+</html>

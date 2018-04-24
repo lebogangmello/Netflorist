@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="florist.WebApiConfig" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.WebApiApplication">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.floristEntities2" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAQAAABBAAAAAACAAQAAEAAAAAAAAAACBAAAAAA=</HashCode>
+      <FileName>Models\florist.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.Procedure_Result" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAgAAAAAABIAAAAABAEAAABAAAAA=</HashCode>
+      <FileName>Models\Procedure_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.tblOrder_view" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAABAAIAAAAACAAAAABAAAAA=</HashCode>
+      <FileName>Models\tblOrder_view.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="13.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="florist.Models.supplier">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAAAAECACiAAAIBAAAAAA=</HashCode>
+      <FileName>Models\supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.supplierinfo">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\supplierinfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.product" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAABAAAAAACAAAACAAAQAACjAEAAAAAAAAA=</HashCode>
+      <FileName>Models\product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.Payment">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAQAgAAAAAABAAAACAAAEIAAAAAAAAAABDAAEAA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.Customer">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAACAAAAAAAAIAAAAICAAAAAAAAAAg=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.Admin">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAgAAQACAAAAAAAAAAAAAAiAAAAAJAAAAg=</HashCode>
+      <FileName>Models\Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.tblDriver">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAACJIBAAA=</HashCode>
+      <FileName>Models\tblDriver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.tblOrder" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAgAAAAAAAgAAAABAFIAAAAACAAAAABAAAAA=</HashCode>
+      <FileName>Models\tblOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Models.tblProImage">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAIAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\tblProImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.AdminsController">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACASAAAAAAQAAAAAAAAEAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Controllers\AdminsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.PaymentsController">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAQAgAACAQAAAAAAAAAAMAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\PaymentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.suppliersController" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACwQAAAAAAAAAAgAEAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\suppliersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.supplierinfoesController">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAJACAQggAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\supplierinfoesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.tblDriversController" Collapsed="true">
+    <Position X="11" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAAAAAIAAAAAAAAAAAAAQAAAABQAII=</HashCode>
+      <FileName>Controllers\tblDriversController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.tblOrdersController" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAQAAgAAAAAAAAAAAAAAAAEAAAAASAAAAA=</HashCode>
+      <FileName>Controllers\tblOrdersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.productsController" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAEgCAAAAAAAAIBAAAAAAAAAAAAAAAk=</HashCode>
+      <FileName>Controllers\productsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.viewProductController">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAIAAAAAAAAAAAAAACAAAAAAACAEAAAAAAAAA=</HashCode>
+      <FileName>Controllers\viewProductController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.tblProImagesController">
+    <Position X="7.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAkAAACAQBAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\tblProImagesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="florist.Controllers.CustomersController" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAABAAAAABAAAAAAACAAAAAAAADAAA=</HashCode>
+      <FileName>Controllers\CustomersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

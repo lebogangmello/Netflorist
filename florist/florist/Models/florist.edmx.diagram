@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f03d022f3512437f856bade97113c9ef" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="floristModel.Admin" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.Payment" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.product" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.supplier" Width="1.5" PointX="10" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.supplierinfo" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.tblDriver" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.tblOrder" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.tblProImage" Width="1.5" PointX="12.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="floristModel.Customer" Width="1.5" PointX="1.25" PointY="3.75" />
+        <AssociationConnector Association="floristModel.FK_Payments_Customer" />
+        <AssociationConnector Association="floristModel.FK_tblOrder_Customer" />
+        <AssociationConnector Association="floristModel.FK_Payments_tblOrder" />
+        <AssociationConnector Association="floristModel.FK_product_supplier" />
+        <AssociationConnector Association="floristModel.FK_tblOrder_product" />
+        <AssociationConnector Association="floristModel.FK_tblProImage_product" />
+        <AssociationConnector Association="floristModel.FK_supplier_supplierinfo" />
+        <AssociationConnector Association="floristModel.FK_tblOrder_tblDriver" />
+        <AssociationConnector Association="floristModel.fk_prod_img_Id" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

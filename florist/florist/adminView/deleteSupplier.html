@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>Detele supplier Information </title>
+    <meta charset="utf-8" />
+
+    <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
+
+</head>
+
+<body style="background-color:#ffc1e3" background-position:center; background-size:cover">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!Dashboard">Home</a>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="text-center text-danger">Supplier Details</h2>
+    <div class="row" ng-controller="DeletesupplierController">
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>SUPPLIER ID</th>
+                        <th>SUPPLIER Name</th>
+                        <th>SUPPLIER EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s in supplierinfo">
+                        <td>{{s.Id}}</td>
+                        <td>{{s.supplierName}}</td>
+                        <td>{{s.suppEmail}}</td>
+                        <td><button class="btn btn-danger btn-block" ng-click="deleteSupp (s.Id)">Delete</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <script src="../scripts/angular.js"></script>
+        <script src="../scripts/angular-route.js"></script>
+        <script src="../Service.js"></script>
+        <script src="../Login.js"></script>
+        <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="../scripts/jquery-1.9.1.js"></script>
+        <script src="../scripts/bootstrap.js"></script>
+</body>
+</html>
+

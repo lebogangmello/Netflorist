@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Demo.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="angularApp" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">NETFLORIST</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="signIn.html">Sign In </a></li>
+                    <li class="active"><a href="register.html">Register</a></li>
+                    <li><a href="user.html">User</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+    <div class="text-center container">
+        <div class="well">
+            <h1>Register</h1>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <form class="form-signin" ng-controller="registerController">
+
+
+            <input ng-model="CustEmail" type="text" class="form-control" placeholder="email" required autofocus>
+
+            <input ng-model="FirstName" type="text" class="form-control" placeholder="name" required autofocus>
+
+            <input ng-model="LastName" type="text" class="form-control" placeholder="Surname" required autofocus>
+
+
+            <input ng-model="Contacts" type="text" class="form-control" placeholder="Phone Number" required autofocus>
+
+            <input ng-model="Password" type="password" class="form-control" placeholder="Password" required>
+            <button ng-click="Register()" class="btn btn-lg btn-primary " type="button">Sign up</button>
+        </form>
+
+    </div>
+
+</body>
+</html>
+

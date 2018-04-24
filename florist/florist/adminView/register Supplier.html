@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="angularApp">
+<head>
+    <title>driver Registration</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+    <script src="../Demo.js"></script>
+    <script src="../Service.js"></script>
+</head>
+
+<body ng-controller="AddsuppController" style="background-image:url('../Images/driver.jpg'); background-position:center; background-size:cover">
+
+    <div class="formBox">
+        <form>
+            <div class="container">
+                <strong><h2 class="text-center">supplier Registration</h2></strong><br />
+                <label>supplier name</label>
+                <input type="text" ng-model="supplierName" placeholder="sname" />
+                <input type="email" ng-model="suppEmail" placeholder="Email" />
+                <label>Password</label>
+                <input type="password" ng-model="password" placeholder="Password" />
+                <br />
+
+                <input ng-click="suppInfo()" type="button" value="Sign Up">
+            </div>
+        </form>
+    </div>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+
+</body>
+</html>
+

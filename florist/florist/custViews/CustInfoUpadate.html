@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Customer Edit Register</title>
+    <meta charset="utf-8" />
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../Login.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+    <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
+
+  
+</head>
+<body ng-controller="CProfileController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <div class="col-sm-4">
+
+        <div class="formBox">
+            <div class="container-fluid">
+                <form>
+
+
+                    <label>Firstname</label>
+                    <input type="text" ng-model="FirstName" placeholder="Firstname" />
+                    <label>Lastname</label>
+                    <input type="text" ng-model="LastName" placeholder="Lastname" />
+                    <label>Contact</label>
+                    <input type="text" ng-model="Contact" placeholder="Contact" />
+                    <label>Email</label>
+                    <input type="email" ng-model="custEmail" placeholder="Email" />
+                    <label>Password</label>
+                    <input type="password" ng-model="Password" placeholder="Password" />
+                    <br />
+                    <input ng-click="modifycust()" type="button" value="Update Profile">
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p>
+</body>
+</html>

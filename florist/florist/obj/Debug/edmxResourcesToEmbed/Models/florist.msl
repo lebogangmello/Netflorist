@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="floristModelStoreContainer" CdmEntityContainer="floristEntities2">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="floristModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="adId" ColumnName="adId" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="suppId" ColumnName="suppId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="drvId" ColumnName="drvId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="floristModel.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="custId" ColumnName="custId" />
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+          <ScalarProperty Name="cardName" ColumnName="cardName" />
+          <ScalarProperty Name="cardCCV" ColumnName="cardCCV" />
+          <ScalarProperty Name="cardType" ColumnName="cardType" />
+          <ScalarProperty Name="cardExpMonth" ColumnName="cardExpMonth" />
+          <ScalarProperty Name="cardExpYear" ColumnName="cardExpYear" />
+          <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="floristModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="img_Id" ColumnName="img_Id" />
+          <ScalarProperty Name="suppId" ColumnName="suppId" />
+          <ScalarProperty Name="prodThreshold" ColumnName="prodThreshold" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="prodId" ColumnName="prodId" />
+          <ScalarProperty Name="prodName" ColumnName="prodName" />
+          <ScalarProperty Name="prodCat" ColumnName="prodCat" />
+          <ScalarProperty Name="prodDesc" ColumnName="prodDesc" />
+          <ScalarProperty Name="prodPrice" ColumnName="prodPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="floristModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="suppId" ColumnName="suppId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="serviceDate" ColumnName="serviceDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supplierinfoes">
+      <EntityTypeMapping TypeName="floristModel.supplierinfo">
+        <MappingFragment StoreEntitySet="supplierinfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+          <ScalarProperty Name="suppEmail" ColumnName="suppEmail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDrivers">
+      <EntityTypeMapping TypeName="floristModel.tblDriver">
+        <MappingFragment StoreEntitySet="tblDriver">
+          <ScalarProperty Name="drvId" ColumnName="drvId" />
+          <ScalarProperty Name="drvFirstname" ColumnName="drvFirstname" />
+          <ScalarProperty Name="drvLastname" ColumnName="drvLastname" />
+          <ScalarProperty Name="drvContact" ColumnName="drvContact" />
+          <ScalarProperty Name="drvEmail" ColumnName="drvEmail" />
+          <ScalarProperty Name="drv_Password" ColumnName="drv_Password" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrders">
+      <EntityTypeMapping TypeName="floristModel.tblOrder">
+        <MappingFragment StoreEntitySet="tblOrder">
+          <ScalarProperty Name="drvId" ColumnName="drvId" />
+          <ScalarProperty Name="custId" ColumnName="custId" />
+          <ScalarProperty Name="prodId" ColumnName="prodId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="orderDeliveryAddress" ColumnName="orderDeliveryAddress" />
+          <ScalarProperty Name="custEmail" ColumnName="custEmail" />
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProImages">
+      <EntityTypeMapping TypeName="floristModel.tblProImage">
+        <MappingFragment StoreEntitySet="tblProImage">
+          <ScalarProperty Name="img_Id" ColumnName="img_Id" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="prodId" ColumnName="prodId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="floristModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="custEmail" ColumnName="custEmail" />
+          <ScalarProperty Name="custId" ColumnName="custId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

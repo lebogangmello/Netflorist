@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Product</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <nav class="navbar navbar-default" ng-app="takealot">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!ShoppingCart"><b><font color="black">takealot</font><font color="blue">.com </font></b></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!ShoppingCart" class="text-right text-danger"><span class="glyphicon glyphicon-list"></span> Products</a></li>
+                <li><a href="#!CustomerProfile" class="text-right text-danger"><span class="glyphicon glyphicon-edit"></span> Account</a></li>
+                <li><a href="#!" class="text-right text-danger"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br />
+    <!--<h2 class="text-center text-danger">Products</h2>-->
+    <h2 class="text-center"><font color="maroon"><b>takealot.com products</b></font></h2>
+    <br />
+
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $("#CartButton").click(function () {
+                $("#ShoppingCart").modal();
+            });
+        });
+
+    </script>
+    <div class="row">
+        <div class="col-md-9 col-md-offset-1" ng-Controller="ShoppingCartController" ng-factory="UserApi">
+            <input type="text" placeholder="Try to filter here" class="input-lg form-control" ng-model="txtFilter" />
+            <br />
+            <br />
+            <div>
+                <button type="button" class="btn btn-default btn-sm btn-danger" style="float:right;" id='CartButton'><span class="glyphicon glyphicon-shopping-cart "></span> Cart items: {{cartItems.length}}  Total R {{cartSum()}} </button>
+            </div>
+            <br />
+            <br />
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product Image</th>
+                        <th>Category Name</th>
+                        <th>Product Description</th>
+                        <th>Product Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="P in prods | filter:txtFilter">
+                    <td><img style="width:150px; height:100px" ng-src="{{'data:image/jpg;base64,'+P.image1}}" class="img-rounded" /></td>
+                    <td>{{ P.ProductName }}</td>
+                    <td>{{ P.CategoryName}}</td>
+                    <td>{{ P.Description }}</td>
+                    <td>{{ P.Price | currency : "R "}}</td>
+                    <td><button type="submit" ng-click="addCartItem(P)" class="btn btn-success custom-width btn-danger">Add to Cart</button></td>
+                </tr>
+            </table>
+            <div class="modal fade" id="ShoppingCart">
+                <div class="modal-dialog">
+                    <div class="modal-content" ng-Controller="ShoppingCartController">
+                        <div class="modal-header btn-danger" style="padding:35px 50px;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <!--<h2 class="text-center">Cart Summary</h2>-->
+                            <h2 class="text-center"><font color="maroon"><b>takealot.com cart summary</b></font></h2>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                                <thead class="panel panel-default">
+                                    <tr>
+                                        <th>Product Image</th>
+                                        <th>Product Name</th>
+                                        <th>Product Price</th>
+                                        <th>Quantity</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="panel panel-default">
+                                    <tr ng-repeat="item in cartItems">
+                                        <td><img style="width:150px; height:100px" ng-src="{{'data:image/jpg;base64,'+P.image1}}" class="img-rounded" /></td>
+                                        <td>{{item.ProductName}}</td>
+                                        <td>{{item.Price | currency : "R"}}</td>
+                                        <td><button ng-click="increase(item)">+</button>&nbsp;{{item.Quantity}}&nbsp;<button ng-click="decrease(item)">-</button></td>
+                                        <td><button type="submit" ng-click="removeFromCart(item)" value="Remove" class="btn btn-danger custom-width">Remove</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-left">
+                                        <td colspan="7" class="panel panel-default text-right text-danger">
+                                            <span class="glyphicon glyphicon-shopping-cart "></span> Cart items: {{cartItems.length}}  Total R {{cartSum()}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger btn-default" id="where-we-are" href="" data-dismiss="modal" data-toggle="modal" data-target="#modls" align="left">Proceed</button>&nbsp;
+                            <button type="button" class="btn btn-primary " data-dismiss="modal">Close</button>
+                            <a class="row-btn" id="where-we-are" href="#" data-toggle="modal" data-target=".www"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order summary modal-->
+            <div class="modal fade modls" id="modls">
+                <div class="modal-dialog">
+                    <div class="modal-content" ng-Controller="ShoppingCartController">
+                        <div class="modal-header btn-danger">
+                            <!--<h2 class="text-center">Order Summary</h2>-->
+                            <h2 class="text-center"><font color="maroon"><b>takealot.com order summary</b></font></h2>
+                        </div>
+                        <div class="modal-body">
+                            <div id="Catalog">
+                                <table class="table table-hover table-striped">
+                                    <thead class="panel panel-default">
+                                        <tr>
+                                            <th>Product Image</th>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Quantity</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="panel panel-default">
+                                        <tr ng-repeat="item in cartItems">
+                                            <td><img style="width:150px; height:100px" ng-src="{{'data:image/jpg;base64,'+P.image1}}" class="img-rounded" /></td>
+                                            <td>{{item.ProductName}}</td>
+                                            <td>{{item.Price | currency : "R "}}</td>
+                                            <td>{{item.Quantity}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="text-left">
+                                            <td colspan="7" class="panel panel-default text-right text-danger">
+                                                Total Cost : <span>R {{cartSum()}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tr>
+                                        <td> &nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Return to Shopping Cart</button>
+                            <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal" data-toggle="modal" data-target="#Delivery">Proceed to Delivery Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal to capture delivery information-->
+            <div class="modal fade mods" id="Delivery">
+                <div class="modal-dialog">
+                    <div class="modal-content" ng-Controller="ShoppingCartController">
+                        <div class="modal-header btn-danger">
+                            <!--<h2 class="text-center">Delivery Information</h2>-->
+                            <h2 class="text-center"><font color="maroon"><b>Delivery Information</b></font></h2>
+                        </div>
+                        <div class="modal-body">
+                            <div id="Catalog">
+                                <form id="registration">
+                                    <div class="form-group">
+                                        <label for="inputCardHolder">Receiver's Name</label>
+                                        <input type="text" ng-model="ReceiverName" class="form-control input-lg" placeholder="Card Holder Name" required maxlength="50" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="BankName">Phone Number</label>
+                                        <input type="text" ng-model="PhoneNumber" class="form-control input-lg" placeholder="Mobile Number" required maxlength="10" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="CardNumber">Delivery Address</label>
+                                        <input type="text" ng-model="DeliveryAddress" class="form-control input-lg" placeholder="Delivery Address" required maxlength="250" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword">Total Price</label>
+                                        <input type="text" ng-model="totalAmount" class="form-control input-lg" disabled />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword">Order Date</label>
+                                        <input type="text" ng-model="OrderDate" class="form-control input-lg glyphicon-calendar" required />
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <label for="inputPassword">Order Status</label>
+                                        <input type="text" ng-init="OrderStatus='Pending'" ng-model="OrderStatus" value="Pending" class="form-control input-lg" disabled hidden />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" data-toggle="modal">Return to Checkout Summary</button>
+                            <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal" data-toggle="modal" ng-click="placeOrder()">Proceed to Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

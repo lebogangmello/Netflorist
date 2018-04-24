@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="angularApp">
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>driver Registration</title>
+	<meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+    <script src="../Demo.js"></script>
+    <script src="../Service.js"></script>
+</head>
+
+<body ng-controller="dregisterController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+   
+        <div class="formBox">
+            <form>
+                <div class="container">
+                    <strong><h2 class="text-center">Driver Registration</h2></strong><br />
+                    <label>Firstname</label>
+                    <input class="form-control" type="text" ng-model="drvFirstname" placeholder="Firstname" />
+                    <label>Lastname</label>
+                    <input class="form-control" type="text" ng-model="drvLastname" placeholder="Lastname" />
+                    <label>Contact</label>
+                    <input class="form-control" type="text" ng-model="drvContact" placeholder="Contact" />
+                    <input class="form-control" type="email" ng-model="drvEmail" placeholder="Email" />
+                    <label>Password</label>
+                    <input class="form-control" type="password" ng-model="drv_Password" placeholder="Password" />
+                    <br />
+
+                    <input ng-click="RegisterDriver()" type="button" class="btn btn-default" value="Sign Up">
+                </div>
+</form>
+        </div>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    
+
+</body>
+</html>

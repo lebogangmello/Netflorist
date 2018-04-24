@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>Product Information</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Demo.js"></script>
+    <script src="../Service.js"></script>
+</head>
+
+<body ng-app="angularApp" ng-controller="productController" style="background-color:#ffc1e3" background-position:center; background-size:cover >
+    <div class="container-fluid">
+
+        <form>
+
+            <input ng-model="ProdName" type="text" class="form-control" placeholder="product name" required autofocus /><br />
+
+            <div class="form-group">
+                <label for="CategoryName">Category Name</label>
+                <input list="Category Name" ng-model="prodCat" name="Category Name" class="form-control input-lg" placeholder="Product Category Name" />
+                <datalist id="Category Name">
+                    <select name="Product Category Name">
+                        <option value="alcohol"></option>
+                        <option value="bakery"></option>
+                        <option value="chocolate"></option>
+                        <option value="flowers"></option>
+                        <option value="hamper"></option>
+                    </select>
+                </datalist>
+            </div>
+
+            <input  class="form-control"ng-model="prodDesc" type="text" class="form-control" placeholder="prodDesc" required autofocus><br />
+            <input class="form-control" ng-model="prodThreshold" type="text" class ="form-control" placeholder="threshold" />
+
+
+            <input class="form-control" ng-model="prodPrice" type="text" class="form-control" placeholder="prodPrice" required autofocus><br />
+
+            <input class="form-control" ng-model="suppId" type="text" class="form-control" placeholder="suppId" required><br />
+            <button ng-click="loadInfo()" class="btn btn-lg btn-primary " type="button">addUP</button>
+        </form>
+        </div>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p> 
+
+</body>
+</html>

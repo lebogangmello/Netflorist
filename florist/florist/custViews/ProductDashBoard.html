@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html style="background-colour="black" background-position:center; background-size:cover>
+<head >
+
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body ng-app="myApp" ng-controller="ShoppingCartController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Netflorist</a>
+            </div>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="#">Home</a></li>
+                <a href="CustInfoUpadate.html">UpdateInfo</a>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="checkout.html">Shopping cart <i class="fa fa-shopping-cart fa-1x"></i><p ng-model="cartTotal">{{ myItems.length}}</p></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="product in productImage">
+                <td><img class="img-responsive" height="200px" width="200px" data-ng-src="data:image/jpeg;base64, {{product.photo}}" /></td>
+                <td>{{product.prodCat}}</td>
+                <td>{{product.prodDesc}}</td>
+                <td>{{product.prodPrice | currency : "R "}}</td>
+                <td><button type="submit" ng-click="addItem(product)" class="btn btn-success custom-width btn-danger">Add to Cart</button></td>
+                <td><button type="submit" ng-click="remove(product)" class="btn btn-success custom-width btn danger">Remove Item</button> </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <a href="checkout.html" ng-show="myItems.length" class="pull-right alert alert-warning">Checkout</a>
+
+    <span class="pull-right alert alert-success">Total Price:{{totalPrice() | currency:"R"}}</span>
+
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p>
+
+
+</body>
+</html>

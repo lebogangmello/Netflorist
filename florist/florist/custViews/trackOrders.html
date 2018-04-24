@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <title>ORDER TRACK</title>
+    <meta charset="utf-8" />
+
+</head>
+<body ng-controller="trackOrderController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <h2 class="text-center text-danger">TRACK YOUR ORDER</h2>
+
+    <form>
+        <table class="table table-hover table-striped" cellspacing="40" align="center" style="width:95%">
+            <thead class="grid-top panel">
+                <tr>
+                    <th>ODER ID</th>
+                    <th>Delivery Status</th>
+                    <th>EMAIL ADDRESS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ord in tblOrder" ng-if="ord.custEmail == User2 ">
+
+                    <td>{{ord.orderId}}</td>
+                    <td>{{ord.orderStatus}}</td>
+                    <td>{{ord.custEmail}}</td>
+                  
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p>
+</body>
+</html>
+
+
+

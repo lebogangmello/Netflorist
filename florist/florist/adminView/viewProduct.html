@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>Orders</title>
+    <meta charset="utf-8" />
+
+</head>
+<body ng-controller="ViewproductsController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+
+
+    <h2 class="text-center text-danger">products in stock</h2>
+
+    <li><a href="updatePROD.html">update Products</a>
+
+    <form>
+        <table class="table table-hover table-striped" cellspacing="40" align="center" style="width:95%">
+            <thead class="grid-top panel">
+                <tr>
+                    <th>product  ID</th>
+                    <th>PRODUCT NAME</th>
+                    <th>product category</th>
+                    <th>product description</th>
+                    <th> PRICE</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in product">
+                    <td>{{p.prodId}}</td>
+                    <td>{{p.prodName}}</td>
+                    <td>{{p.prodCat}}</td>
+                    <th>{{p.prodDesc}}</th>
+                    <td>{{p.prodPrice}}</td>
+                    <td><a href="orderToSupp.html" class="btn btn-success">Make Order</a></td>    
+
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p>
+    <script src="../Scripts/bootstrap.js"></script>
+</body>
+</html>
+
+

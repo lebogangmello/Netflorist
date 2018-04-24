@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Driver Edit Register</title>
+    <meta charset="utf-8" />
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular.min.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/signin.css" rel="stylesheet" />
+
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+    <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
+
+    <script src="../Service.js"></script>
+    <script src="../Login.js"></script>
+
+</head>
+<body ng-controller="DProfileController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <div class="col-sm-4">
+
+        <div class="formBox">
+            <div class="container-fluid">
+                <form>
+
+                   
+                    <label>Firstname</label>
+                    <input class="form-control" type="text" ng-model="drvFirstname" placeholder="Firstname"   />
+                    <label>Lastname</label>
+                    <input class="form-control" type="text" ng-model="drvLastname" placeholder="Lastname"   />
+                    <label>Contact</label>
+                    <input class="form-control" type="text" ng-model="drvContact" placeholder="Contact" />
+                    <label>Email</label>
+                    <input class="form-control" type="email" ng-model="drvEmail" placeholder="Email"   />
+                    <label>Password</label>
+                    <input class="form-control" type="password" ng-model="drv_Password" placeholder="Password"   />
+                    <br />
+                    <input class="btn btn-default" ng-click="modifyDriver()" type="button" value="Update Profile">
+
+
+                </form>
+
+            </div>
+    </div> 
+     </div>
+    
+     <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p> 
+</body>
+</html>

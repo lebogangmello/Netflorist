@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>Checkout Page</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:#ffc1e3" background-position:center; background-size:cover>
+
+
+    <div class="container"  ng-app="myApp" ng-controller="BasketController">
+        <div class="well">
+
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CATEGORY</th>
+                        <th>PRICE PER ITEM</th>
+                        <th>QUANTITY</th>
+                        <th>SUBTOTAL</th>
+                    </tr>
+                </thead>
+                <tbody id="ok">
+                    <tr ng-repeat="item in Items">
+                        <td>{{ item.prodId }}</td>
+                        <td>{{ item.prodCat }}</td>
+                        <td>{{ item.prodPrice | currency : "R"}}</td>
+                        <td><input type="number" ng-model="quantity" min="1" max="9" /></td>
+                        <td>{{quantity * item.prodPrice| currency : "R"}}</td>
+                        <!-- remove button | not showing -->
+                        <!--<td><button ng-click="removeItem($index)" class="btn-sm btn-danger">Remove</button></td>-->
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-left">
+                <strong><span class="pull-left alert alert-success"><h4>TOTAL PRICE:{{totalPrice| currency : "R"}}</h4></span></strong>
+                <a href="Payment.html" class="pull-right alert alert-warning"><h4>Proceed</h4></a>
+                <a href="ProductDashBoard.html" class="pull-right alert alert-danger"><h4>Go Back</h4></a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> LogOut
+        </a>
+    </p> 
+</body>
+</html>

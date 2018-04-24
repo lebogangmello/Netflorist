@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <title>Customer Order</title>
+    <meta charset="utf-8" />
+
+
+
+</head>
+<body ng-app="myApp" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <div class="container" ng-controller="OrderController">
+        <div class="left">
+            <div class="formBox">
+                <form>
+                    <label>Firstname</label><br />
+                    <input class="form-control" type="text" ng-model="name" placeholder="First name" disabled /><br /><br />
+                    <label>Contact</label><br />
+                    <input class="form-control" type="text" ng-model="contact" placeholder="Contact" disabled /><br /><br />
+                    <label>email</label><br />
+                    <input class="form-control" type="text" ng-model="email" placeholder="email" disabled /><br /><br />
+                    <label>Total Price</label><br />
+                    <input class="form-control" type="text" ng-model="totalPrice" placeholder="Total amount due" disabled /><br /><br />
+                    <label>Delivery Address</label><br />
+                    <input class="form-control" type="text" ng-model="orderDeliveryAddress" placeholder="Delivery Address" /><br /><br />
+                    <button class="btn btn-lg btn-primary " ng-click="AdOrder()">place order</button>
+                    <!--<input class="form-control" ng-click="AdOrder()" type="button" value="Order">-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/bootstrap.js"></script>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Login.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p> 
+
+</body>
+</html>
+

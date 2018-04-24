@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="floristModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="adId" />
+    </Key>
+    <Property Name="adId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="suppId" Type="int" />
+    <Property Name="orderId" Type="int" />
+    <Property Name="drvId" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="custId" />
+    </Key>
+    <Property Name="custId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="paymentId" />
+    </Key>
+    <Property Name="paymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cardName" Type="varchar" MaxLength="50" />
+    <Property Name="cardCCV" Type="varchar" MaxLength="50" />
+    <Property Name="cardType" Type="varchar" MaxLength="50" />
+    <Property Name="cardExpMonth" Type="varchar" MaxLength="50" />
+    <Property Name="cardExpYear" Type="varchar" MaxLength="50" />
+    <Property Name="paymentDate" Type="date" />
+    <Property Name="custId" Type="int" />
+    <Property Name="orderId" Type="int" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="prodId" />
+    </Key>
+    <Property Name="prodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prodName" Type="varchar" MaxLength="50" />
+    <Property Name="prodCat" Type="varchar" MaxLength="50" />
+    <Property Name="prodDesc" Type="varchar(max)" />
+    <Property Name="prodPrice" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="prodThreshold" Type="int" />
+    <Property Name="suppId" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="img_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="suppId" />
+    </Key>
+    <Property Name="suppId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="category" Type="varchar" MaxLength="50" />
+    <Property Name="quantity" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="serviceDate" Type="datetime" />
+    <Property Name="Id" Type="int" />
+  </EntityType>
+  <EntityType Name="supplierinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="supplierName" Type="varchar" MaxLength="50" />
+    <Property Name="suppEmail" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblDriver">
+    <Key>
+      <PropertyRef Name="drvId" />
+    </Key>
+    <Property Name="drvId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="drvFirstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="drvLastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="drvContact" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="drvEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="drv_Password" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="orderId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="totalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="orderDeliveryAddress" Type="varchar(max)" />
+    <Property Name="custEmail" Type="varchar" MaxLength="50" />
+    <Property Name="orderStatus" Type="varchar" MaxLength="50" />
+    <Property Name="paymentId" Type="int" />
+    <Property Name="prodId" Type="int" />
+    <Property Name="custId" Type="int" />
+    <Property Name="drvId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblProImage">
+    <Key>
+      <PropertyRef Name="img_Id" />
+    </Key>
+    <Property Name="img_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="photo" Type="varbinary(max)" Nullable="false" />
+    <Property Name="prodId" Type="int" />
+  </EntityType>
+  <Association Name="FK_Payments_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="custId" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="custId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_tblOrder">
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrder">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_img_Id">
+    <End Role="tblProImage" Type="Self.tblProImage" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProImage">
+        <PropertyRef Name="img_Id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="img_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="suppId" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="suppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplier_supplierinfo">
+    <End Role="supplierinfo" Type="Self.supplierinfo" Multiplicity="0..1" />
+    <End Role="supplier" Type="Self.supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplierinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="supplier">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrder_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="custId" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="custId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrder_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="prodId" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="prodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrder_tblDriver">
+    <End Role="tblDriver" Type="Self.tblDriver" Multiplicity="0..1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDriver">
+        <PropertyRef Name="drvId" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="drvId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblProImage_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="tblProImage" Type="Self.tblProImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="prodId" />
+      </Principal>
+      <Dependent Role="tblProImage">
+        <PropertyRef Name="prodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="floristModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplierinfo" EntityType="Self.supplierinfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProImage" EntityType="Self.tblProImage" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Payments_Customer" Association="Self.FK_Payments_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_tblOrder" Association="Self.FK_Payments_tblOrder">
+      <End Role="tblOrder" EntitySet="tblOrder" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_img_Id" Association="Self.fk_prod_img_Id">
+      <End Role="tblProImage" EntitySet="tblProImage" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_supplier" Association="Self.FK_product_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplier_supplierinfo" Association="Self.FK_supplier_supplierinfo">
+      <End Role="supplierinfo" EntitySet="supplierinfo" />
+      <End Role="supplier" EntitySet="supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrder_Customer" Association="Self.FK_tblOrder_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="tblOrder" EntitySet="tblOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrder_product" Association="Self.FK_tblOrder_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="tblOrder" EntitySet="tblOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrder_tblDriver" Association="Self.FK_tblOrder_tblDriver">
+      <End Role="tblDriver" EntitySet="tblDriver" />
+      <End Role="tblOrder" EntitySet="tblOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblProImage_product" Association="Self.FK_tblProImage_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="tblProImage" EntitySet="tblProImage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

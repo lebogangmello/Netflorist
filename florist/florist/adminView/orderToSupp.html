@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="angularApp">
+<head>
+    <title>MAKE an ORDER</title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Demo.js"></script>
+    <script src="../Service.js"></script>
+</head>
+
+<body style="background-color:#ffc1e3" ng-controller="suppController"   background-position:center; background-size:cover">
+    
+    <div class="container">
+        <div class="formBox">
+            <form>
+                <h2 class="text-center" ><strong>Order New Product</strong></h2>
+                <p><strong>Supplier ID</strong></p>
+                <input type="text" class="form-control" ng-model="suppId" placeholder="Supplier ID" /><br />
+                <p><strong>Name</strong></p>
+                <input type="text" class="form-control" ng-model="category" placeholder="Category" /><br />
+                <p><strong>Category</strong></p>
+                <input type="text" class="form-control"  ng-model="name" placeholder="Name" /><br />
+                <p><strong>Quantity</strong></p>
+                <input type="text" class="form-control" ng-model="quantity" placeholder="Quantity" /><br />
+                <p><strong>serviceDate</strong></p>
+                <input type="date" class="form-control" ng-model="serviceDate" placeholder="date placed" />      
+                <p><strong>Product Description</strong></p>
+                <input type="text"  class="form-control" ng-model="description" placeholder="product Description"/><br />
+    
+       
+            </form>
+        </div>
+    </div>
+    <p>
+        <a href="../Index.html" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </p> 
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NetFLorist</title>
+    <meta charset="utf-8" />
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/css/font-awesome.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   
+
+
+</head>
+<body ng-app="AngularApp" style="background-color:#ffd5fa">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="img-responsive" height="19%" width="19%" src="slidesImages/download.png" /></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="custViews/SignIn.html">Sign In </a></li>
+                    <li><a href="custViews/register.html">Register</a></li>
+                    <li><a href="empPage.html">Restricted</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+
+
+    <div class="w3-content w3-section" style="max-width:500px">
+        <img class="mySlides w3-animate-fading" src="slidesImages/NETER431.jpg"  style="width:100%">
+        <img class="mySlides w3-animate-fading" src="slidesImages/NETSP3700.jpg"  style="width:100%">
+        <img class="mySlides w3-animate-fading" src="slidesImages/RA1841.jpg" style="width:100%">
+        <img class="mySlides w3-animate-fading" src="slidesImages/Red_Roses_in_Cellophane.jpg" style="width:100%">
+    </div>
+
+    <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 9000);
+}
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Update Order Status</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../Login.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+
+  
+</head>
+<body ng-controller="DOrdersController" style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <div class="col-md-3 col-md-offset-1">
+        <h3 class="text-danger">Select Order</h3>
+        <hr />
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                {{selectedItems}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li ng-repeat="d in order_data">
+                    <a ng-click="dropboxitemselected(d)">{{d.orderDeliveryAddress}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <form ng-show="isDeleteItemVisible">
+            <div class="form-group">
+                <label for="InputEmail">Total Price</label>
+                <input type="text" ng-model="totalPrice" class="form-control input-lg" placeholder="Total Price" disabled />
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Delivery Address</label>
+                <input type="text" ng-model="orderDeliveryAddress" class="form-control input-lg" placeholder="Delivery Address" disabled />
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Customer Identity</label>
+                <input type="text" ng-model="custId" class="form-control input-lg" placeholder="Identity" disabled />
+            </div>
+            <div class="form-group">
+                <label for="order_DeliveryStatus">Delivery Status</label>
+                <input list="orderDeliveryStatus" ng-model="orderDeliveryStatus" name="Delivery Status" class="form-control input-lg" placeholder="Select one option" />
+                <datalist id="orderDeliveryStatus">
+                    <select name="order_DeliveryStatus">
+                        <option value="Delivered">Order is Delivered</option>
+                        <option value="Not Delivered">Order couldn't be Delivered</option>
+                    </select>
+                </datalist>
+            </div>
+            <button ng-click="statusUpdate()" class="btn btn-warning form-control input-lg">Update Status</button>
+        </form>
+    </div>
+
+</body>
+</html>

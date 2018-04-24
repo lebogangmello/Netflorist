@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Update Product</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
+
+</head>
+<body style="background-color:#ffc1e3" background-position:center; background-size:cover>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!Dashboard">Home</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
+                    <ol class="dropdown-menu">
+                        <li><a href="productInfo.html" class="text-left text-danger"><span class="glyphicon glyphicon-plus"></span> Add Product</a></li>
+                        <li><a href="updateProduct.html" class="text-left text-danger"><span class="glyphicon glyphicon-edit"></span> Update Product</a></li>
+                        <li><a href="#!DeleteProduct" class="text-left text-danger"><span class="glyphicon glyphicon-trash"></span> Delete Product</a></li>
+                    </ol>
+                </li>
+                <li><a href="#!" class="text-right text-danger"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="text-center text-danger">Product Details</h2>
+    <div class="row" ng-controller="UpdateProductController">
+        <div class="col-md-6 col-md-offset-3">
+            <hr />
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3 class="text-danger">Select Product</h3>
+                    <hr />
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            {{selectedItem}}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li ng-repeat="p in product">
+                                <a ng-click="dropboxitemselected(p)">{{p.prodName}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <form ng-show="isDeleteItemVisible">
+                        <div class="form-group">
+                            <label for="ProductName">Product Name</label>
+                            <input type="text" ng-model="prodName" name="Property Status" class="form-control input-lg validate" placeholder="Product Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="CategoryName">Category Name</label>
+                            <input list="Category Name" ng-model="prodCat" name="Category Name" class="form-control input-lg" placeholder="Product Category Name" />
+                            <datalist id="Category Name">
+                                <select name="Product Category Name">
+                                    <option value="alcohol"></option>
+                                    <option value="bakery"></option>
+                                    <option value="chocolate"></option>
+                                    <option value="flowers"></option>
+                                    <option value="hamper"></option>
+                                </select>
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="ProductDescription">Product Description</label>
+                            <input type="text" ng-model="prodDesc" class="form-control input-lg validate" placeholder="Product Description" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Price">Product Price</label>
+                            <input type="text" ng-model="prodPrice" class="form-control input-lg validate" placeholder="Price" required />
+                        </div>
+                        <br>
+                        <div>
+                            <button ng-click="UpdateProd()" class="btn btn-info ">Update Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+    <script src="../Service.js"></script>
+    <script src="../Login.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../scripts/jquery-1.9.1.js"></script>
+    <script src="../scripts/bootstrap.js"></script>
+</body>
+</html>
